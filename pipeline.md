@@ -124,3 +124,101 @@ figures and tables.
 ---
 
 ## Execution Summary
+
+
+# Analytical and Design Decisions
+
+Major decisions made during the project, with paper-supported
+rationale.
+
+---
+
+## D-001 · Home-Based Trips Only
+
+Restricted the analytic sample to home-based trips by linking
+trip origins and destinations across survey records.
+
+---
+
+## D-002 · Binary Outcome: Transit vs. Private Vehicle
+
+Outcome coded as transit (1) vs. private vehicle (0).
+Other modes excluded.
+
+---
+
+## D-003 · Adaptive Image Extent by Tract Size
+
+Mapbox image footprint scales with census tract size rather than
+using a fixed-radius buffer.
+
+**Rationale (from paper):** Census tracts vary substantially in
+size; a fixed image extent would yield inconsistent
+representations of the built environment.
+
+---
+
+## D-004 · 100 PCA Components per VLM
+
+Each VLM embedding compressed to 100 principal components.
+
+**Rationale (from paper):** Ensures fair comparison across VLMs
+with different raw embedding dimensions. Sensitivity analysis
+showed 100 PCs is sufficient — explains 95.7%, 95.1%, and 92.8%
+of variance for CLIP, RemoteCLIP, and DINOv3 respectively.
+
+---
+
+## D-005 · Post-Lasso Logistic Regression
+
+Two-step procedure: Lasso for feature selection, followed by
+unpenalized logistic regression on selected features.
+
+**Rationale (from paper):** Reduces regularization bias and
+enables statistical inference (standard errors, p-values) on
+the selected features.
+
+---
+
+## D-006 · Lasso Penalty C = 0.02
+
+scikit-learn inverse regularization strength `C = 0.02` selected
+via cross-validation.
+
+---
+
+## D-007 · RemoteCLIP for Semantic Interpretation
+
+RemoteCLIP used to provide textual interpretation of significant
+imagery PCs.
+
+**Rationale (from paper):** RemoteCLIP learns a shared embedding
+space for remote sensing imagery and textual descriptions of
+built environment characteristics, so PCA components can be
+mapped to interpretable concepts.
+
+---
+
+## D-008 · Three-Tier Concept Taxonomy (100 Phrases)
+
+Tier 1 (20 phrases, 5D framework) + Tier 2 (20 phrases,
+satellite morphological) + Tier 3 (60 phrases, data-driven via
+InternVL3-78B).
+
+**Rationale (from paper):** Combines theory-driven (Tiers 1–2)
+and data-driven (Tier 3) descriptions of the built environment.
+
+---
+
+## D-009 · Stratified 80/20 Train–Test Split
+
+Train N = 10,410; Test N = 2,603. Stratified on the binary
+transit outcome.
+
+---
+
+## D-010 · Hardware
+
+All experiments performed on NVIDIA L4 GPU (24 GB GDDR6) via
+HiPerGator at University of Florida. Implementation in Python
+using PyTorch 2.7.1, scikit-learn 1.3.0, statsmodels.
