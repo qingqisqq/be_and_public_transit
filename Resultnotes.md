@@ -86,31 +86,3 @@ ViT-H/14), RemoteCLIP (ViT-B/32, ViT-L/14), and DINOv3
 (Sat-B, Sat-L, Sat-H). Detailed results for the five
 non-featured models are in the paper's Appendix.
 
-### R-02 · PCA Component Sensitivity
-
-100 PCs retained as the parsimonious threshold.
-
-> [TBC: exact alternative PC counts tested]
-
----
-
-## Specifications That Did Not Work
-
-### X-01 · DINOv3 for Text-Concept Interpretation
-
-DINOv3 is self-supervised without text supervision, so it does
-not have a shared text–image embedding space. RemoteCLIP used
-instead for all concept alignment analysis.
-
----
-
-## Open Questions and Future Directions
-
-- **VLM hallucination:** O'Hare misclassification example
-  (F-08) shows current VLM limits in spatial reasoning.
-- **Generalizability:** Context-specific Chicago findings
-  suggest replication needed in other metropolitan areas.
-- **Counterintuitive concept retrieval:** Some PCs (D-PC35,
-  D-PC47) yielded concept retrievals that appeared
-  counterintuitive in text form but were partially resolved
-  by visual evidence.
