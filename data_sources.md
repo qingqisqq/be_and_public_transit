@@ -10,8 +10,7 @@ All raw data stored in `raw_data/` and never modified.
 - **Used for:** Trip records, sociodemographics, mode choice outcome
 - **Notes:** Home-based trips filtered; trip mode recoded to binary
   transit vs. private vehicle
-
-> [TBC: exact URL, version/date, license]
+- **URL** https://datahub.cmap.illinois.gov/documents/2e0719dce2c34eeea81039eca35def80/about
 
 ---
 
@@ -20,20 +19,15 @@ All raw data stored in `raw_data/` and never modified.
 - **Provider:** U.S. Environmental Protection Agency
 - **Variables used:** Population density, employment density (D1C),
   employment entropy
-- **License:** Public domain (U.S. federal government)
-
-> [TBC: exact version and download date]
+- **URL** https://www.epa.gov/smartgrowth/smart-location-mapping#SLD
 
 ---
 
 ## 3. OpenStreetMap
 
 - **Provider:** OpenStreetMap contributors
-- **License:** Open Database License (ODbL)
 - **Variables used:** Intersection density, road network complexity,
   amenity / POI density
-
-> [TBC: download date / snapshot]
 
 ---
 
@@ -41,9 +35,7 @@ All raw data stored in `raw_data/` and never modified.
 
 - **Provider:** City of Chicago
 - **URL:** https://data.cityofchicago.org
-- **Datasets used:** Building footprints, parks, CTA stops, land use
-
-> [TBC: exact dataset names and download dates]
+- **Datasets used:** parks, CTA stops
 
 ---
 
@@ -54,18 +46,6 @@ All raw data stored in `raw_data/` and never modified.
 - **Coverage:** 1,148 census tracts
 - **Notes:** Image extent adaptive to tract size
 
-> [TBC: exact API endpoint, access date]
-
 ---
 
-## 6. VLM Model Weights
 
-Models used (loaded from HuggingFace / official releases):
-- CLIP (ViT-B/32, ViT-L/14, ViT-H/14)
-- RemoteCLIP (ViT-B/32, ViT-L/14)
-- DINOv3 (Sat-B, Sat-L, Sat-H)
-- InternVL3-78B (used for Tier 3 phrase generation)
-
-> [TBC: exact model checkpoints / commit hashes]
-
-Model weights are **not** stored in this repository.
